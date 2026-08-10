@@ -1,5 +1,7 @@
 # WardenAuthz Go SDK
 
+[![CI](https://github.com/ecarrizo2/wardenauthz-go/actions/workflows/ci.yml/badge.svg)](https://github.com/ecarrizo2/wardenauthz-go/actions/workflows/ci.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/ecarrizo2/wardenauthz-go.svg)](https://pkg.go.dev/github.com/ecarrizo2/wardenauthz-go) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Official Go client for the [WardenAuthz](https://wardenauthz.com) managed authorization API.
 
 ## Installation
