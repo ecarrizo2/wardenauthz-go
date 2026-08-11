@@ -222,6 +222,7 @@ type ApiKeyItem struct {
 	SubjectId string `json:"subjectId"`
 	Name string `json:"name"`
 	ScopeId *string `json:"scopeId,omitempty"`
+	KeyPrefix *string `json:"keyPrefix,omitempty"`
 	ExpiresAt *string `json:"expiresAt,omitempty"`
 	LastUsedAt *string `json:"lastUsedAt,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`
@@ -239,6 +240,7 @@ type ApiKeyCreatedItem struct {
 	SubjectId string `json:"subjectId"`
 	Name string `json:"name"`
 	ScopeId *string `json:"scopeId,omitempty"`
+	KeyPrefix *string `json:"keyPrefix,omitempty"`
 	ExpiresAt *string `json:"expiresAt,omitempty"`
 	LastUsedAt *string `json:"lastUsedAt,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`
@@ -252,6 +254,7 @@ type ApiKeyCreatedItem struct {
 type CreateApiKeyInput struct {
 	Name string `json:"name"`
 	Type *string `json:"type,omitempty"`
+	KeyPrefix *string `json:"keyPrefix,omitempty"`
 	ExpiresAt *string `json:"expiresAt,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`
 	Permissions *[]string `json:"permissions,omitempty"`
