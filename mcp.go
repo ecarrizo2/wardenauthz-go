@@ -68,3 +68,17 @@ func (r *MCPResource) DeleteAssignment(ctx context.Context, scopeID, subjectID, 
 	path := fmt.Sprintf("/v1/scope/%s/mcp-assignment/%s/%s", scopeID, url.PathEscape(subjectID), url.PathEscape(serverKey))
 	return r.client.delete(ctx, path)
 }
+
+// ProvisionForOrg provisions an MCP server for every active team member at a capped trust tier
+// (Enterprise-Managed Authorization — zero-touch, no per-user OAuth). Returns the count.
+func (r *MCPResource) ProvisionForOrg(ctx context.Context, scopeID, serverKey string, maxTier TrustTier) (int, error) {
+	type output struct {
+		Provisioned int `json:"provisioned"`
+	}
+	var out output
+	path := fmt.Sprintf("/v1/scope/%s/mcp-assignment/provision", scopeID)
+	if err := r.client.post(ctx, path, map[string]any{"serverKey": serverKey, "maxTier": maxTier}, &out); err != nil {
+		return 0, err
+	}
+	return out.Provisioned, nil
+}
