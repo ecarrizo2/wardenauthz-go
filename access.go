@@ -14,6 +14,15 @@ func (r *AccessResource) HasAccess(ctx context.Context, input AccessCheckInput) 
 	return &result, nil
 }
 
+// HasAccessSelf evaluates the authenticated API key's own permissions (M2M self-check).
+func (r *AccessResource) HasAccessSelf(ctx context.Context, input SelfAccessCheckInput) (*AccessCheckResult, error) {
+	var result AccessCheckResult
+	if err := r.client.post(ctx, "/v1/access/check-self", input, &result); err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 func (r *AccessResource) HasAccessBulk(ctx context.Context, inputs []AccessCheckInput) ([]AccessCheckResult, error) {
 	var results []AccessCheckResult
 	if err := r.client.post(ctx, "/v1/access/check-bulk", inputs, &results); err != nil {

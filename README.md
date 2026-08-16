@@ -139,6 +139,7 @@ All methods accept `context.Context` as the first parameter for cancellation and
 | Method | Description |
 |--------|-------------|
 | `HasAccess(ctx, input)` | Check if a subject has access to a resource+action |
+| `HasAccessSelf(ctx, input)` | M2M self-check — evaluate the authenticated API key's own access |
 | `HasAccessBulk(ctx, inputs)` | Check multiple access decisions at once |
 | `ListPermissions(ctx, input)` | List effective permissions for a subject |
 | `ListRoles(ctx, input)` | List effective roles for a subject |

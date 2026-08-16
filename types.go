@@ -370,6 +370,18 @@ type AccessCheckInput struct {
 	IncludeReason *bool                   `json:"includeReason,omitempty"`
 }
 
+// SelfAccessCheckInput is an M2M self-check: the subject is the authenticated API
+// key, so SubjectId is omitted. ScopeId is required (the resource owner must name
+// the scope being checked).
+type SelfAccessCheckInput struct {
+	ScopeId       string                  `json:"scopeId"`
+	Resource      string                  `json:"resource"`
+	ResourceId    *string                 `json:"resourceId,omitempty"`
+	Action        string                  `json:"action"`
+	Context       *map[string]interface{} `json:"context,omitempty"`
+	IncludeReason *bool                   `json:"includeReason,omitempty"`
+}
+
 type AccessCheckReasoningEntry struct {
 	RoleId string `json:"roleId"`
 	RoleName string `json:"roleName"`
