@@ -114,7 +114,6 @@ type ScopeItem struct {
 }
 
 type CreateScopeInput struct {
-	ID string `json:"id"`
 	Name string `json:"name"`
 	Type string `json:"type"`
 	ParentId *string `json:"parentId,omitempty"`

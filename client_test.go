@@ -220,9 +220,6 @@ func TestClient_Post_Success(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 			t.Fatalf("failed to decode body: %v", err)
 		}
-		if body.ID != "scope-new" {
-			t.Errorf("expected ID scope-new, got %q", body.ID)
-		}
 		if body.Name != "New Scope" {
 			t.Errorf("expected Name 'New Scope', got %q", body.Name)
 		}
@@ -237,7 +234,6 @@ func TestClient_Post_Success(t *testing.T) {
 
 	var result ScopeItem
 	err := client.postPublic(context.Background(), "/v1/scope", CreateScopeInput{
-		ID:   "scope-new",
 		Name: "New Scope",
 		Type: "workspace",
 	}, &result)
@@ -283,7 +279,6 @@ func TestClient_Post_NonRetryableError(t *testing.T) {
 	client := NewClient(ClientConfig{APIURL: server.URL, APIKey: "test-key"})
 
 	err := client.postPublic(context.Background(), "/v1/scope", CreateScopeInput{
-		ID:   "bad",
 		Name: "Bad",
 	}, nil)
 	if err == nil {
@@ -417,9 +412,6 @@ func TestClient_DoRaw_Success(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 			t.Fatalf("failed to decode body: %v", err)
 		}
-		if body.ID != "raw-scope" {
-			t.Errorf("expected ID raw-scope, got %q", body.ID)
-		}
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusCreated)
@@ -431,7 +423,6 @@ func TestClient_DoRaw_Success(t *testing.T) {
 
 	var result ScopeItem
 	err := client.doRawPublic(context.Background(), http.MethodPost, "/v1/scope", CreateScopeInput{
-		ID:   "raw-scope",
 		Name: "Raw Test",
 		Type: "organization",
 	}, &result)

@@ -129,9 +129,6 @@ func TestScopesResource_Create(t *testing.T) {
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 			t.Fatalf("failed to decode body: %v", err)
 		}
-		if body.ID != "scope-new" {
-			t.Errorf("expected ID scope-new, got %q", body.ID)
-		}
 		if body.Name != "New Scope" {
 			t.Errorf("expected Name 'New Scope', got %q", body.Name)
 		}
@@ -147,7 +144,6 @@ func TestScopesResource_Create(t *testing.T) {
 
 	client := NewClient(ClientConfig{APIURL: server.URL, APIKey: "test-key"})
 	result, err := client.Scopes.Create(context.Background(), CreateScopeInput{
-		ID:   "scope-new",
 		Name: "New Scope",
 		Type: "organization",
 	})
