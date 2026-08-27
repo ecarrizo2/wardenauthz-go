@@ -39,7 +39,7 @@ type Client struct {
 	TeamMembers    *TeamMembersResource
 	ResourceTypes  *ResourceTypesResource
 	Tuples         *TuplesResource
-	Integrations   *IntegrationsResource
+	McpServers     *McpServersResource
 	MCP            *MCPResource
 	Consent        *ConsentResource
 	Agent          *AgentResource
@@ -94,7 +94,7 @@ func NewClient(cfg ClientConfig) *Client {
 	c.TeamMembers = &TeamMembersResource{c}
 	c.ResourceTypes = &ResourceTypesResource{c}
 	c.Tuples = &TuplesResource{c}
-	c.Integrations = &IntegrationsResource{c}
+	c.McpServers = &McpServersResource{c}
 	c.MCP = &MCPResource{c}
 	c.Consent = &ConsentResource{c}
 	c.Agent = &AgentResource{c}
