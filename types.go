@@ -929,9 +929,9 @@ type AgentIntentInstance struct {
 }
 
 type AgentIntent struct {
-	IntegrationId string                `json:"integrationId"`
-	Tools         []string              `json:"tools"`
-	Instances     []AgentIntentInstance `json:"instances,omitempty"`
+	ServerKey string                `json:"serverKey"`
+	Tools     []string              `json:"tools"`
+	Instances []AgentIntentInstance `json:"instances,omitempty"`
 }
 
 type MintIntentSessionTokenInput struct {
@@ -1181,11 +1181,11 @@ type AgentCheckInput struct {
 }
 
 type AgentCheckResult struct {
-	Allowed       bool    `json:"allowed"`
-	JTI           string  `json:"jti"`
-	PrincipalID   string  `json:"principalId"`
-	Reason        *string `json:"reason,omitempty"`
-	IntegrationID *string `json:"integrationId,omitempty"`
-	Pending       *bool   `json:"pending,omitempty"`
-	ApprovalID    *string `json:"approvalId,omitempty"`
+	Allowed     bool    `json:"allowed"`
+	JTI         string  `json:"jti"`
+	PrincipalID string  `json:"principalId"`
+	Reason      *string `json:"reason,omitempty"`
+	ServerKey   *string `json:"serverKey,omitempty"`
+	Pending     *bool   `json:"pending,omitempty"`
+	ApprovalID  *string `json:"approvalId,omitempty"`
 }
