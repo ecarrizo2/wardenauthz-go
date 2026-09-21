@@ -1001,22 +1001,27 @@ type McpServer struct {
 	CreatedAt   float64         `json:"createdAt"`
 	CreatedBy   *string         `json:"createdBy,omitempty"`
 	Tools       []McpToolConfig `json:"tools,omitempty"`
+	// CredentialMode controls which principals may use the upstream credential:
+	// "delegated" (default) | "shared" | "shared-restricted".
+	CredentialMode *string `json:"credentialMode,omitempty"`
 }
 
 type CreateMcpServerInput struct {
-	Id          string           `json:"id"`
-	Name        string           `json:"name"`
-	Provider    string           `json:"provider"`
-	Status      *McpServerStatus `json:"status,omitempty"`
-	UpstreamUrl *string          `json:"upstreamUrl,omitempty"`
-	Tools       []McpToolConfig  `json:"tools,omitempty"`
+	Id             string           `json:"id"`
+	Name           string           `json:"name"`
+	Provider       string           `json:"provider"`
+	Status         *McpServerStatus `json:"status,omitempty"`
+	UpstreamUrl    *string          `json:"upstreamUrl,omitempty"`
+	CredentialMode *string          `json:"credentialMode,omitempty"`
+	Tools          []McpToolConfig  `json:"tools,omitempty"`
 }
 
 type UpdateMcpServerInput struct {
-	Name        *string          `json:"name,omitempty"`
-	Status      *McpServerStatus `json:"status,omitempty"`
-	UpstreamUrl *string          `json:"upstreamUrl,omitempty"`
-	Tools       []McpToolConfig  `json:"tools,omitempty"`
+	Name           *string          `json:"name,omitempty"`
+	Status         *McpServerStatus `json:"status,omitempty"`
+	UpstreamUrl    *string          `json:"upstreamUrl,omitempty"`
+	CredentialMode *string          `json:"credentialMode,omitempty"`
+	Tools          []McpToolConfig  `json:"tools,omitempty"`
 }
 
 type VerifyIntentCallInstanceInput struct {
