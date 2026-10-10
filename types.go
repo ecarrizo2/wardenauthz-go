@@ -1109,31 +1109,41 @@ type McpCallContextTargetEntry struct {
 	Value string `json:"value"`
 }
 
+// McpJustification is an optional rationale for a HITL tool call. Source is "human" (accountable)
+// or "agent" (model-authored, unverified).
+type McpJustification struct {
+	Text   string  `json:"text"`
+	Source string  `json:"source"`
+	At     float64 `json:"at"`
+}
+
 type McpApprovalSummary struct {
-	ID        string          `json:"id"`
-	SubjectID string          `json:"subjectId"`
-	ServerKey string          `json:"serverKey"`
-	Tool      string          `json:"tool"`
-	Level     string          `json:"level"`
-	Context   *McpCallContext `json:"context,omitempty"`
-	CreatedAt float64         `json:"createdAt"`
-	ExpiresAt *float64        `json:"expiresAt,omitempty"`
+	ID            string            `json:"id"`
+	SubjectID     string            `json:"subjectId"`
+	ServerKey     string            `json:"serverKey"`
+	Tool          string            `json:"tool"`
+	Level         string            `json:"level"`
+	Context       *McpCallContext   `json:"context,omitempty"`
+	Justification *McpJustification `json:"justification,omitempty"`
+	CreatedAt     float64           `json:"createdAt"`
+	ExpiresAt     *float64          `json:"expiresAt,omitempty"`
 }
 
 type McpApprovalHistoryItem struct {
-	ID           string          `json:"id"`
-	SubjectID    string          `json:"subjectId"`
-	ServerKey    string          `json:"serverKey"`
-	Tool         string          `json:"tool"`
-	Level        string          `json:"level"`
-	Context      *McpCallContext `json:"context,omitempty"`
-	CreatedAt    float64         `json:"createdAt"`
-	ExpiresAt    *float64        `json:"expiresAt,omitempty"`
-	Status       string          `json:"status"`
-	DecidedBy    *string         `json:"decidedBy,omitempty"`
-	DecidedAt    *float64        `json:"decidedAt,omitempty"`
-	SelfApproved *bool           `json:"selfApproved,omitempty"`
-	Reason       *string         `json:"reason,omitempty"`
+	ID            string            `json:"id"`
+	SubjectID     string            `json:"subjectId"`
+	ServerKey     string            `json:"serverKey"`
+	Tool          string            `json:"tool"`
+	Level         string            `json:"level"`
+	Context       *McpCallContext   `json:"context,omitempty"`
+	Justification *McpJustification `json:"justification,omitempty"`
+	CreatedAt     float64           `json:"createdAt"`
+	ExpiresAt     *float64          `json:"expiresAt,omitempty"`
+	Status        string            `json:"status"`
+	DecidedBy     *string           `json:"decidedBy,omitempty"`
+	DecidedAt     *float64          `json:"decidedAt,omitempty"`
+	SelfApproved  *bool             `json:"selfApproved,omitempty"`
+	Reason        *string           `json:"reason,omitempty"`
 }
 
 type McpVelocityEffective struct {
